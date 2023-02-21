@@ -43,10 +43,10 @@ export default function TaskHookForm(props) {
         </label>
         <input
           {...register("title", {
-            required: "Task başlığı doldurulmalıdır",
+            required: "Task başlığı yazmalısınız",
             minLength: {
               value: 3,
-              message: "Task başlığı en az 3 karakter olmalıdır",
+              message: "Task başlığı en az 3 karakter olmalı",
             },
           })}
           className="input-text"
@@ -66,10 +66,10 @@ export default function TaskHookForm(props) {
           id="description"
           name="description"
           {...register("description", {
-            required: "Task açıklama kısmı doldurulmalıdır",
+            required: "Task açıklaması yazmalısınız",
             minLength: {
               value: 10,
-              message: "Task açıklaması en az 10 karakter olmalıdır",
+              message: "Task açıklaması en az 10 karakter olmalı",
             },
           })}
         ></textarea>
@@ -91,6 +91,8 @@ export default function TaskHookForm(props) {
                   validate: {
                     birdenFazla: (p) =>
                       p.length >= 1 || "Lütfen en az bir kişi seçin",
+                    maxThree: (p) =>
+                      p.length <= 3 || "En fazla 3 kişi seçebilirsiniz",
                   },
                 })}
               />
